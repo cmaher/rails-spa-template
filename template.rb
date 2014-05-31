@@ -1,5 +1,9 @@
+def relative_path(path)
+  File.expand_path(path, "#{__FILE__}/files")
+end
+
 def makefile(path)
-  read_path = File.expand_path(path, "#{__FILE__}/files")
+  read_path = relative_path(path)
   file path, IO.read(read_path)
 end
 
@@ -31,7 +35,7 @@ end
 
 run 'bundle install'
 
-makefile '.gitignore'
+file '.gitignore', IO.read(relative_path('dot_gitignore')
 
 makefile 'bower.json'
 rake 'bower:install'
@@ -41,17 +45,21 @@ makefile 'app/assets/javascripts/requirejs_config.js'
 makefile 'app/assets/javascripts/lib/backbone-pkg.js'
 makefile 'app/assets/javascripts/lib/stub.js'
 
+
+makefile 'app/assets/stylesheets/application.css.scss'
 makefile 'app/views/layouts/application.html.erb'
 makefile 'app/views/webapp/index.html.erb'
 
 makefile 'app/controllers/webapp_controller.rb'
-makefile 'config/routes.rb'
+route "root to:'webapp#index'"
+route "get '*path' => 'webapp#index'"
 
 generate 'rspec:install'
 makefile 'spec/spec_helper.rb'
-makefile 'spec/factories'
+file 'spec/factories/.keep'
 
 generate 'jasmine_rails:install'
 makefile 'app/helpers/jasmine_rails/spec_helper.rb'
 makefile 'app/views/layouts/jasmine_rails/spec_runner.html.erb'
+file 'spec/javascripts/spec/.keep'
 
