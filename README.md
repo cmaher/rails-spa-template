@@ -6,6 +6,6 @@ A rails template for creating a Single Page App using backbone, react, and requi
 # Usage
 
     $ rails new \<PROJECT\_NAME\> -J -T -d postgresql\ 
-        -m https://raw.github.com/cmaher/rails-spa-template/master/template.rb
+        -m https://raw.githubusercontent.com/cmaher/rails-spa-template/master/template.rb
     $ rake db:create
     $ rails server
