@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html;charset=UTF-8" http-equiv="Content-Type"/>
+    <title>Jasmine Specs</title>
+
+    <%= stylesheet_link_tag *jasmine_css_files %>
+
+    <%= javascript_tag 'var require = { baseUrl: "/assets" };' %>
+    <%= javascript_include_tag 'require' %>
+    <%= javascript_include_tag 'requirejs_config' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag *(jasmine_js_files - ['jasmine-specs.js']) %>
+
+    <%= javascript_tag do -%>
+        var specs = <%= raw javascript_spec_files.to_json %>;
+        require(specs, function () {
+            //cleanup
+            var oldBar = document.querySelector('.bar.passed');
+            oldBar.parentNode.removeChild(oldBar);
+            window.onload();
+        });
+    <% end -%>
+</head>
+<body>
+<div id="jasmine_content"></div>
+<%= yield %>
+</body>
+</html>

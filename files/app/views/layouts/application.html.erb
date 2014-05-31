@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RailsApiBackboneReactTodo</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+</head>
+<body>
+    <%= yield %>
+    <%= requirejs_include_tag %>
+    <%= javascript_include_tag 'requirejs_config' %>
+    <%= javascript_include_tag 'application' %>
+</body>
+</html>
