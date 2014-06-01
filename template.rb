@@ -10,6 +10,9 @@ end
 
 gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 gem 'bower-rails', '~> 0.7.2'
+gem_group :development do
+  gem 'pry-rails', '~> 0.3.2'
+end
 gem_group :development, :test do
   gem 'rspec-rails', '~> 2.14.2'
   gem 'factory_girl_rails', '~> 4.4.1'
